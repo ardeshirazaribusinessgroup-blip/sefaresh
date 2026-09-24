@@ -10,7 +10,9 @@ test("public pages, supplier administration, categories and product archive", as
   await page.goto("/");
   await expect(page.locator("h1")).toContainText("خرید مواد اولیه");
   await expect(
-    page.getByRole("list", { name: "مسیر خرید با سفارش" }).getByRole("listitem"),
+    page
+      .getByRole("list", { name: "مسیر خرید با سفارش" })
+      .getByRole("listitem"),
   ).toHaveCount(3);
   await expect(
     page.getByRole("img", { name: "روشا، همراه راهنمای خرید سفارش" }),
@@ -25,6 +27,20 @@ test("public pages, supplier administration, categories and product archive", as
     path: `tmp/qa/${testInfo.project.name}-landing.png`,
     fullPage: true,
   });
+  if (testInfo.project.name === "mobile") {
+    const originalViewport = page.viewportSize()!;
+    await page.setViewportSize({ width: 320, height: 700 });
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+    await page.screenshot({
+      path: "tmp/qa/mobile-landing-320.png",
+      fullPage: true,
+    });
+    await page.setViewportSize(originalViewport);
+  }
   await expect(
     page.getByRole("link", { name: "ببینید چطور کار می‌کند" }),
   ).toHaveAttribute("href", "#how");

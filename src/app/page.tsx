@@ -41,13 +41,19 @@ export default function Landing() {
               <span>آسان شد.</span>
             </h1>
             <p>
-              نیازهای تیم را یک‌جا ثبت کنید، شرایط تأمین را کنار هم ببینید و مسیر
-              خرید را تا تحویل پیگیری کنید.
+              نیازهای تیم را یک‌جا ثبت کنید، شرایط تأمین را کنار هم ببینید و
+              مسیر خرید را تا تحویل پیگیری کنید.
             </p>
             <ol className="landing-flow" aria-label="مسیر خرید با سفارش">
-              <li><span>۱</span> ثبت نیاز</li>
-              <li><span>۲</span> مقایسه تأمین</li>
-              <li><span>۳</span> پیگیری خرید</li>
+              <li>
+                <span>۱</span> ثبت نیاز
+              </li>
+              <li>
+                <span>۲</span> مقایسه تأمین
+              </li>
+              <li>
+                <span>۳</span> پیگیری خرید
+              </li>
             </ol>
             <div className="public-actions">
               <ActionLink href="/register">
